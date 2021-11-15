@@ -5,11 +5,13 @@ public class Node {
     private int id;
     private Color color;
     private LinkedList<Integer> neighborsIds;
+    private int cost;
 
     public Node(int id, Color color) {
         neighborsIds = new LinkedList<Integer>();
         this.id = id;
         this.color = color;
+        changeCost(color);
     }
 
     public Node copy() {
@@ -23,13 +25,16 @@ public class Node {
 
     public void changeColorTo(Color color){
         this.color= color;
+        changeCost(color);
     }
 
     public void reverseNodeColor() {
         if (color == Color.Green) {
             color = Color.Red;
+            this.cost = 1;
         } else if (color == Color.Red) {
             color = Color.Green;
+            this.cost = 3;
         }
     }
 
@@ -54,5 +59,18 @@ public class Node {
         return this.id;
     }
 
+    public int getCost() {
+        return cost;
+    }
+
+    private void changeCost(Color color){
+        if (color == Color.Red){
+            this.cost = 1;
+        }else if(color == Color.Black){
+            this.cost = 2;
+        }else if(color == Color.Green){
+            this.cost = 3;
+        }
+    }
 }
 
