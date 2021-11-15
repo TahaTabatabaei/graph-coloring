@@ -103,7 +103,7 @@ public class State {
     public  int getSelectedNodeId(){
         return selectedNodeId;
     }
-
+    
     public int getDepth() {
         return depth;
     }
